@@ -9,7 +9,6 @@ import {
 
 import { Home } from "../screens";
 import { View } from "react-native";
-import Shadow from "../styles/Shadows";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
