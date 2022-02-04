@@ -7,8 +7,8 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 
-import { Home } from "../screens";
-import { View } from "react-native";
+import { Home, Setting, Kategori, Cari } from "../screens";
+import { Image, StyleSheet, View } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -21,17 +21,91 @@ function HomeStack() {
       headerMode="none"
       barStyle={{
         backgroundColor: "#ffffff",
-        marginHorizontal: wp(2),
+        marginHorizontal: wp(5),
         position: "absolute",
         bottom: hp(2.5),
-        elevation: 2,
+        elevation: 0,
         borderRadius: 15,
-        height: hp(9),
         position: "absolute",
         overflow: "hidden",
       }}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: false,
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Image
+                source={require("../assets/icons/home2.png")}
+                style={Style.tabScreen}
+              />
+            ) : (
+              <Image
+                source={require("../assets/icons/home.png")}
+                style={Style.tabScreen}
+              />
+            ),
+        }}
+      />
+      <Tab.Screen
+        name="Kategori"
+        component={Kategori}
+        options={{
+          tabBarLabel: false,
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Image
+                source={require("../assets/icons/book-alt2.png")}
+                style={Style.tabScreen}
+              />
+            ) : (
+              <Image
+                source={require("../assets/icons/book-alt.png")}
+                style={Style.tabScreen}
+              />
+            ),
+        }}
+      />
+      <Tab.Screen
+        name="Cari"
+        component={Cari}
+        options={{
+          tabBarLabel: false,
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Image
+                source={require("../assets/icons/search2.png")}
+                style={Style.tabScreen}
+              />
+            ) : (
+              <Image
+                source={require("../assets/icons/search.png")}
+                style={Style.tabScreen}
+              />
+            ),
+        }}
+      />
+      <Tab.Screen
+        name="Setting"
+        component={Setting}
+        options={{
+          tabBarLabel: false,
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Image
+                source={require("../assets/icons/settings2.png")}
+                style={Style.tabScreen}
+              />
+            ) : (
+              <Image
+                source={require("../assets/icons/settings.png")}
+                style={Style.tabScreen}
+              />
+            ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -49,3 +123,11 @@ const Router = () => {
 };
 
 export default Router;
+
+const Style = StyleSheet.create({
+  tabScreen: {
+    width: wp(2),
+    height: hp(3.9),
+    marginTop: hp(0.5),
+  },
+});
